@@ -1,0 +1,21 @@
+steps:
+  - name: gcr.io/cloud-builders/docker
+    args:
+      - build
+      - "-t"
+      - "gcr.io/blissful-jet-303616/OpenCV:$TAG_NAME"
+      - "-t"
+      - "gcr.io/blissful-jet-303616/OpenCV:latest"
+      - "."
+  - name: gcr.io/cloud-builders/docker
+    args:
+      - push
+      - "gcr.io/blissful-jet-303616/OpenCV:$TAG_NAME"
+  - name: gcr.io/cloud-builders/docker
+    args:
+      - push
+      - "gcr.io/blissful-jet-303616/OpenCV:latest"
+timeout: 4000s
+images:
+  - "gcr.io/blissful-jet-303616/OpenCV:$TAG_NAME"
+  - "gcr.io/blissful-jet-303616/OpenCV:latest"
